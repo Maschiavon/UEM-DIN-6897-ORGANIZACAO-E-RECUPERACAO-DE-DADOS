@@ -1,0 +1,101 @@
+Organização e Recuperação de Dados
+
+Profa. Valéria
+Atividade 1
+Memória Secundária
+Supondo um disco com as características abaixo, responda:
+● 6 superfícies
+● 4.096 trilhas/superfície
+● 110 setores/trilha
+● 512 bytes/setor
+● Velocidade de rotação = 7.200 RPM
+● Tempo médio de seek = 10 ms
+● Latência média = 5,6 ms
+
+1. Qual é a capacidade de armazenamento do disco em bytes?
+R: 6 x 4096 x 110 x 512 = 1.384.120.320  //OK
+
+2. Quantos cilindros o disco possui?
+R: 4096  //OK
+
+3. Quantos cilindros serão necessários para armazenar um arquivo com 95.000 registros de
+256 bytes cada?
+95000 registros com 256 cada ocupam 47500 setores e temos 110 setores por trilha então
+47500/ 110 = 431,81 setores/trilha = 431,81 cilindros //Errado
+
+Como podem ser armazenados 2 registros/setor, serão necessários 95.000/2 = 47.500 setores.
+O disco tem 110 setores/trilha e 6 trilhas por cilindro, então um cilindro tem 110 × 6 = 660
+setores.
+Logo, serão necessários 47.500/660 ~ 71,97 cilindros para armazenar o arquivo.
+
+4. Sabendo que o tempo de transferência de uma trilha é igual ao tempo de uma rotação,
+qual é o tempo (em milissegundos) de transferência de uma trilha?
+Simplificar e fazer regra de 3:
+7200rpm são 120 rotações por segundo
+
+120 -----  1
+ 1  -----  x
+
+x = 1/120 = aproximadamente 8,333... milisegundos
+
+
+5. Qual é o tempo médio (em milissegundos) estimado para a leitura de uma trilha aleatória
+do disco?
+10ms //Errado
+
+É a soma dos seguintes tempos:
+= seek + latência + transferência de uma trilha
+= 10 ms + 5,6 ms + 8,33 ms = 23,93 ms
+
+
+6. Qual é o tempo médio (em milissegundos) estimado para a leitura de um setor aleatório?
+
+estimase que o tempo media é metade de uma rotação então
+
+8,3/2 = 4,15 aproximadamente; //Errado
+
+Tempo de transferência de 1 trilha = 8,33 ms e 1 trilha tem 110 setores.
+
+Então o tempo de transferência de um setor é ~ 0,076 ms.
+Somando todos os tempos para a leitura de um setor aleatório:
+= seek + latência + transferência de um setor
+= 10 ms + 5,6 ms + 0,076ms = 15,68 ms
+
+Corrigindo a latência para 4,17 ms, a resposta seria 10 + 4,17 + 0,076 = 14,25 ms
+
+
+7. Qual seria o tempo estimado para ler 110 trilhas distribuídas aleatoriamente pelo disco?
+110 x 8,3 = 916,63 ms //Errado
+
+Como calculado no exercício 5, o tempo médio estimado para a leitura de uma trilha aleatória do
+disco é de 23,93 ms.
+Como as 110 trilhas estão distribuídas aleatoriamente pelo disco, o tempo para ler as 110 trilhas
+será 23,93 × 110 = 2.632,3 ms ou ~ 2,63 seg.
+
+Corrigindo a latência para 4,17 ms, o tempo médio estimado para a leitura de uma trilha
+aleatória do disco é de 22,5 ms. Logo, a resposta final do exercício seria 22,5 × 110 = 2.475 ms
+ou ~ 2,48 seg.
+
+
+8. Qual seria o tempo estimado para ler todas as trilhas de um cilindro aleatório?
+temos 6 superficies logo 3 pratos e então 2x3 = 6 trilhas por cilindro
+o tempo de 1 trilha é de leitura de uma trilha é 10ms então 6x10 = 60 ms
+
+A alternância na leitura de trilhas de um mesmo cilindro não envolve seek e latência. Dessa
+forma, teremos apenas um seek e uma latência para o cilindro.
+Tempo de transf. de 1 trilha = 8,33 ms e 1 cilindro tem 6 trilhas, então o tempo de transferência
+de um cilindro é 8,33 × 6 = 49,98 ms.
+Somando todos os tempos para a leitura de um cilindro aleatório:
+= 1 seek + 1 latência + transferência de um cilindro
+= 10 ms + 5,6 ms + 49,98 ms = 65,58 ms
+
+Corrigindo a latência para 4,17 ms, a resposta seria 10 + 4,17 + 49,98 = 64,15 ms
+
+
+
+CONCLUSÃO
+Logica certa/ conta errada
+
+
+
+
